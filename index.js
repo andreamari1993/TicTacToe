@@ -8,12 +8,13 @@ $(document).ready(function() {
     $("#row-2").hide();
     $("#row-3").hide();
     $("#row-4").hide();
+    var d = new Date();
 
+    $("#p-footer").html("&copy;" + d.getFullYear() + " Copyright by: ");
     // create 2D
     for (i = 0; i < arr.length; i++) {
         arr[i] = new Array(3);
     }
-
     // create 3D
     for (i = 0; i < arr.length; i++) {
         for (j = 0; j < arr[0].length; j++) {
@@ -55,23 +56,21 @@ $("#move").change(function() {
     var bg_color = '';
     var p1 = $("#player1").val();
     var p2 = $("#player2").val();
+    var choice = parseInt($("#move").val());
+    if (isNaN(choice) || (choice <= 0 || choice > 9)) {
+        alert("Si prega di inserire un numero compreso tra 1 e 9");
+        return;
+    }
+
+    console.log(move_count);
     if (move_count % 2 == 0) {
         char = "O";
-        bg_color = "beige";
-
-        $("#player").html(p1);
 
 
     } else {
         char = "X";
-        bg_color = "cadetblue";
-        $("#player").html(p2);
     }
-    var choice = parseInt($("#move").val());
 
-    $("#span-" + choice).html(char);
-
-    $("#col-" + choice).css("background-color", bg_color);
     if (choice >= 1 && choice <= 3) {
 
         var j = 0;
@@ -83,9 +82,16 @@ $("#move").change(function() {
                 j = 2;
                 break;
         }
-        setChoice(0, j, char);
-    }
+        var checkIsFree = checkCellIsFree(0, j);
+        if (checkIsFree) {
+            setChoice(0, j, char);
+        } else {
+            console.log(move_count);
+            alert("La cella selezionata \u00E9 gi\u00E0 stata marcata!");
+            return;
+        }
 
+    }
     if (choice >= 4 && choice <= 6) {
         var j = 0;
         switch (choice) {
@@ -96,8 +102,14 @@ $("#move").change(function() {
                 j = 2;
                 break;
         }
-
-        setChoice(1, j, char);
+        var checkIsFree = checkCellIsFree(1, j);
+        if (checkIsFree) {
+            setChoice(1, j, char);
+        } else {
+            console.log(move_count);
+            alert("La cella selezionata \u00E9 gi\u00E0 stata marcata!");
+            return;
+        }
     }
 
     if (choice >= 7 && choice <= 9) {
@@ -110,9 +122,32 @@ $("#move").change(function() {
                 j = 2;
                 break;
         }
-
-        setChoice(2, j, char);
+        var checkIsFree = checkCellIsFree(2, j);
+        if (checkIsFree) {
+            setChoice(2, j, char);
+        } else {
+            console.log(move_count);
+            alert("La cella selezionata \u00E9 gi\u00E0 stata marcata!");
+            return;
+        }
     }
+
+    if (move_count % 2 == 0) {
+
+        bg_color = "beige";
+
+        $("#player").html(p1);
+
+
+    } else {
+        bg_color = "cadetblue";
+        $("#player").html(p2);
+    }
+
+
+    $("#span-" + choice).html(char);
+
+    $("#col-" + choice).css("background-color", bg_color);
 
     $("#move").val('');
 
@@ -179,9 +214,13 @@ function checkWin() {
     return ret;
 }
 
+function checkCellIsFree(i, j) {
+    return arr[i][j] != "X" && arr[i][j] != "O";
+}
+
 function setChoice(i, j, value) {
     arr[i][j] = value;
-    console.log(arr);
+    // console.log(arr);
 }
 
 function playAgain() {
