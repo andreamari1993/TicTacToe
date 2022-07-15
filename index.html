@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="icon" type="image/x-icon" href=".//favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href=".//space.css" rel="stylesheet">
+    <style>
+        .col-border {
+            border: 1px solid gray;
+            height: 50px;
+            /* text-align: center; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .my-box {
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            border-radius: 50px;
+        }
+        
+        .my-box.p1 {
+            background-color: cadetblue;
+        }
+        
+        .my-box.p2 {
+            background-color: beige;
+        }
+        
+        .my-d-none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container m-t-30">
+        <!-- Content here -->
+        <h1 class="text-center m-b-20">Tic Tac Toe</h1>
+        <div class="row">
+            <div class="col-6 p-l-0">
+                <div class="my-box p1 pull-left"></div>
+                <label class="form-label">Giocatore 1 (X):</label>
+                <input type="text" class="form-control" id="player1" placeholder="Giocatore 1...">
+            </div>
+            <div class="col-6 p-r-0">
+                <div class="my-box p2 pull-left"></div>
+                <label class="form-label">Giocatore 2 (O):</label>
+
+                <input type="text" class="form-control" id="player2" placeholder="Giocatore 2...">
+            </div>
+        </div>
+
+        <div class="row m-t-30" id="row-1" style="display: none;">
+            <div class="col-4 col-border" id="col-1">
+                <span class="" id="span-1">1</span>
+            </div>
+            <div class="col-4 col-border" id="col-2">
+                <span id="span-2">2</span>
+            </div>
+            <div class="col-4 col-border" id="col-3">
+                <span id="span-3">3</span>
+            </div>
+        </div>
+
+        <div class="row" id="row-2" style="display: none;">
+            <div class="col-4 col-border" id="col-4">
+                <span id="span-4">4</span>
+            </div>
+            <div class="col-4 col-border" id="col-5">
+                <span id="span-5">5</span>
+            </div>
+            <div class="col-4 col-border" id="col-6">
+                <span id="span-6">6</span>
+            </div>
+        </div>
+
+
+        <div class="row" id="row-3" style="display: none;">
+            <div class="col-4 col-border" id="col-7">
+                <span id="span-7">7</span>
+            </div>
+            <div class="col-4 col-border" id="col-8">
+                <span id="span-8">8</span>
+            </div>
+            <div class="col-4 col-border" id="col-9">
+                <span id="span-9">9</span>
+            </div>
+        </div>
+
+        <div class="row m-t-20" id="row-4" style="display: none;">
+            <div class="col-4 p-l-0">
+                <p class="form-label">Turno di: </p>
+                <p id="player"></p>
+            </div>
+            <div class="col-4 p-l-0">
+                <label class="form-label">Mossa (Digita da 1 a 9 per marcare la cella):</label>
+                <input type="text" class="form-control" id="move" placeholder="Digita un numero per la mossa...">
+            </div>
+            <div class="col-4 p-l-0">
+                <label class="form-label w-100">&nbsp;</label>
+                <button class="btn btn-primary" onclick="playAgain()" id="btn-play-again">
+					Gioca ancora
+				</button>
+            </div>
+        </div>
+        <!-- <div class="row m-t-20">
+            <div class="col-4 p-l-0">
+                <button class="btn btn-primary" onclick="playAgain()" id="btn-play-again" style="display: none;">
+					Gioca ancora
+				</button>
+            </div>
+        </div> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src=".//index.js"></script>
+    <script>
+    </script>
+</body>
+
+</html>
